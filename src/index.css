@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+* html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradient-bg-welcome {
+  background-color: #0a0e1a;
+  background-image: radial-gradient(
+      at 0% 0%,
+      hsla(220, 40%, 12%, 1) 0,
+      transparent 50%
+    ),
+    radial-gradient(at 50% 0%, hsla(210, 55%, 32%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(160, 60%, 28%, 1) 0, transparent 55%);
+}
+
+.gradient-bg-services {
+  background-color: #0a0e1a;
+  background-image: radial-gradient(
+      at 0% 0%,
+      hsla(220, 40%, 8%, 1) 0,
+      transparent 50%
+    ),
+    radial-gradient(at 50% 100%, hsla(165, 45%, 18%, 1) 0, transparent 60%);
+}
+
+.gradient-bg-transactions {
+  background-color: #0a0e1a;
+  background-image: radial-gradient(
+      at 0% 100%,
+      hsla(220, 40%, 8%, 1) 0,
+      transparent 50%
+    ),
+    radial-gradient(at 50% 0%, hsla(160, 50%, 20%, 1) 0, transparent 55%);
+}
+
+.gradient-bg-footer {
+  background-color: #0a0e1a;
+  background-image: radial-gradient(
+      at 0% 100%,
+      hsla(220, 40%, 8%, 1) 0,
+      transparent 53%
+    ),
+    radial-gradient(at 50% 150%, hsla(165, 55%, 20%, 1) 0, transparent 55%);
+}
+
+.blue-glassmorphism {
+  background: rgb(39, 51, 89, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* white glassmorphism */
+.white-glassmorphism {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.employee-card {
+  background-color: #1a3a52;
+  background-image: radial-gradient(
+      at 83% 67%,
+      hsla(165, 60%, 45%, 1) 0,
+      transparent 58%
+    ),
+    radial-gradient(at 67% 20%, hsla(200, 70%, 50%, 1) 0, transparent 59%),
+    radial-gradient(at 88% 35%, hsla(210, 65%, 55%, 1) 0, transparent 50%),
+    radial-gradient(at 31% 91%, hsla(175, 50%, 40%, 1) 0, transparent 52%),
+    radial-gradient(at 27% 71%, hsla(195, 60%, 45%, 1) 0, transparent 49%),
+    radial-gradient(at 74% 89%, hsla(160, 65%, 42%, 1) 0, transparent 51%),
+    radial-gradient(at 53% 75%, hsla(185, 55%, 48%, 1) 0, transparent 45%);
+}
+
+.text-gradient {
+  background-color: #fff;
+  background-image: radial-gradient(
+      at 4% 36%,
+      hsla(180, 65%, 85%, 1) 0,
+      transparent 53%
+    ),
+    radial-gradient(at 100% 60%, hsla(210, 70%, 45%, 1) 0, transparent 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.typing-glitch {
+  position: relative;
+  animation: glitch 0.5s ease-in-out;
+}
+
+.typing-glitch::before,
+.typing-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.typing-glitch::before {
+  animation: glitch-1 0.5s ease-in-out;
+  color: #ff0000;
+  z-index: -1;
+}
+
+.typing-glitch::after {
+  animation: glitch-2 0.5s ease-in-out;
+  color: #00ff00;
+  z-index: -2;
+}
+
+@keyframes glitch {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  10% {
+    transform: translate(-2px, -1px);
+  }
+  20% {
+    transform: translate(2px, 1px);
+  }
+  30% {
+    transform: translate(-1px, 2px);
+  }
+  40% {
+    transform: translate(1px, -1px);
+  }
+  50% {
+    transform: translate(-2px, 1px);
+  }
+  60% {
+    transform: translate(2px, -2px);
+  }
+  70% {
+    transform: translate(-1px, 1px);
+  }
+  80% {
+    transform: translate(1px, 2px);
+  }
+  90% {
+    transform: translate(-2px, -1px);
+  }
+}
+
+@keyframes glitch-1 {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  10% {
+    transform: translate(2px, 1px);
+  }
+  20% {
+    transform: translate(-2px, -1px);
+  }
+  30% {
+    transform: translate(1px, -2px);
+  }
+  40% {
+    transform: translate(-1px, 1px);
+  }
+  50% {
+    transform: translate(2px, -1px);
+  }
+  60% {
+    transform: translate(-2px, 2px);
+  }
+  70% {
+    transform: translate(1px, -1px);
+  }
+  80% {
+    transform: translate(-1px, -2px);
+  }
+  90% {
+    transform: translate(2px, 1px);
+  }
+}
+
+@keyframes glitch-2 {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  10% {
+    transform: translate(-1px, 2px);
+  }
+  20% {
+    transform: translate(1px, -2px);
+  }
+  30% {
+    transform: translate(-2px, 1px);
+  }
+  40% {
+    transform: translate(2px, -1px);
+  }
+  50% {
+    transform: translate(-1px, -2px);
+  }
+  60% {
+    transform: translate(1px, 2px);
+  }
+  70% {
+    transform: translate(-2px, -1px);
+  }
+  80% {
+    transform: translate(2px, 1px);
+  }
+  90% {
+    transform: translate(-1px, 2px);
+  }
+}
+
+.program-card {
+  background: linear-gradient(
+    135deg,
+    rgba(26, 58, 82, 0.9) 0%,
+    rgba(15, 35, 50, 0.9) 100%
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(80, 200, 180, 0.2);
+  transition: all 0.3s ease;
+}
+
+.program-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(80, 200, 180, 0.5);
+  box-shadow: 0 20px 40px rgba(80, 200, 180, 0.15);
+}
+
+.icon-container {
+  background: linear-gradient(
+    135deg,
+    rgba(80, 200, 180, 0.2) 0%,
+    rgba(50, 120, 200, 0.2) 100%
+  );
+  transition: all 0.3s ease;
+}
+
+.program-card:hover .icon-container {
+  background: linear-gradient(
+    135deg,
+    rgba(80, 200, 180, 0.3) 0%,
+    rgba(50, 120, 200, 0.3) 100%
+  );
+  transform: scale(1.1);
+}
+
+.tag {
+  background: rgba(80, 200, 180, 0.15);
+  border: 1px solid rgba(80, 200, 180, 0.3);
+}

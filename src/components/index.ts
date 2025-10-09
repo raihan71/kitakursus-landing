@@ -1,0 +1,8 @@
+export { default as Navbar } from './Navbar';
+export { default as Footer } from './Footer';
+export { default as Loader } from './Loader';
+export { default as Service } from './Service';
+export { default as Hero } from './Hero';
+export { default as Program } from './Program';
+export { default as WhyChooseUs } from './WhyChooseUs';
+export { default as CardEmployee } from './CardEmployee';
