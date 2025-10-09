@@ -1,4 +1,3 @@
-import React from 'react';
 import { programs } from '../configs/constants';
 
 const Program = () => {

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const WhyChooseUs = () => (
   <div className="w-full px-4 pt-12 pb-24">
     <div className="flex w-full justify-center items-center">
