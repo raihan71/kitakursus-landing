@@ -4,6 +4,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import type { NavbarItemProps } from '../types/NavbarItemProps';
 import { images } from '../configs/image';
 import { menus } from '../configs/menu';
+import SwitcherLanguage from './SwitcherLanguage';
 
 const NavBarItem = ({ title, classprops }: NavbarItemProps) => (
   <li className={`mx-4 cursor-pointer ${classprops}`}>{title}</li>
@@ -27,9 +28,7 @@ const Navbar = () => {
         {menus.map((item, index) => (
           <NavBarItem key={index} title={item.title} />
         ))}
-        <li className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
-          Masuk
-        </li>
+        <SwitcherLanguage />
       </ul>
       <div className="flex relative">
         {!toggleMenu && (

@@ -1,13 +1,13 @@
 import { images } from '../configs/image';
 
 const Footer = () => (
-  <div className="w-full flex md:justify-center justify-between items-center flex-col p-4 gradient-bg-footer">
+  <footer className="w-full flex md:justify-center justify-between items-center flex-col p-4 gradient-bg-footer">
     <div className="w-full flex sm:flex-row flex-col justify-between items-center my-4">
       <div className="flex flex-[0.5] justify-center items-center">
-        <img src={images.logo_white} alt="logo" className="w-72" />
+        <img src={images.logo_white} alt="logo" className="w-44" />
       </div>
-      <div className="flex flex-1 justify-around items-center flex-wrap sm:mt-0 mt-5 w-full">
-        <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 items-start sm:items-center">
+      <div className="flex flex-col md:flex-row flex-1 justify-around items-center flex-wrap sm:mt-0 mt-5 w-full">
+        <div className="flex flex-row gap-6 sm:gap-12 items-center">
           <div className="flex flex-col text-white">
             <span className="font-semibold mb-2">Explore</span>
             <a className="text-gray-300 text-sm hover:text-white cursor-pointer">
@@ -33,11 +33,35 @@ const Footer = () => (
               FAQ
             </a>
           </div>
+          <div className="flex flex-col text-white">
+            <span className="font-semibold mb-2">Support</span>
+            <a className="text-gray-300 text-sm hover:text-white cursor-pointer">
+              Help Center
+            </a>
+            <a className="text-gray-300 text-sm hover:text-white cursor-pointer">
+              Terms of Service
+            </a>
+            <a className="text-gray-300 text-sm hover:text-white cursor-pointer">
+              Privacy Policy
+            </a>
+          </div>
+          <div className="flex flex-col text-white">
+            <span className="font-semibold mb-2">Company</span>
+            <a className="text-gray-300 text-sm hover:text-white cursor-pointer">
+              About Us
+            </a>
+            <a className="text-gray-300 text-sm hover:text-white cursor-pointer">
+              Careers
+            </a>
+            <a className="text-gray-300 text-sm hover:text-white cursor-pointer">
+              Contact
+            </a>
+          </div>
         </div>
 
         {/* Social + CTA */}
-        <div className="flex flex-col items-start sm:items-end gap-4">
-          <div className="flex space-x-3">
+        <div className="flex flex-col items-center sm:items-end gap-8 md:gap-4">
+          <div className="flex mt-5 md:mt-0 space-x-6 md:space-x-3">
             {/* Twitter */}
             <a
               href="#"
@@ -104,7 +128,7 @@ const Footer = () => (
         Since 2018. All rights reserved
       </p>
     </div>
-  </div>
+  </footer>
 );
 
 export default Footer;
