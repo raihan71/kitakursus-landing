@@ -2,10 +2,9 @@ import React from 'react';
 import { AiFillPlayCircle } from 'react-icons/ai';
 import { jobTitles } from '../configs/constants';
 import CardEmployee from './CardEmployee';
-import { useTranslation } from 'react-i18next';
+import type { TranslationProps } from '../types/TranslationProps';
 
-const Hero = () => {
-  const { t } = useTranslation();
+const Hero = ({ translate }: TranslationProps) => {
   const [currentJobTitle, setCurrentJobTitle] = React.useState(jobTitles[0]);
   const [isAnimating, setIsAnimating] = React.useState(false);
 
@@ -31,17 +30,17 @@ const Hero = () => {
       <div className="flex mf:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
         <div className="flex flex-1 justify-start items-start flex-col mf:mr-10">
           <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1">
-            {t('hero_title_1')} <br /> {t('hero_title_2')}
+            {translate('hero_title_1')} <br /> {translate('hero_title_2')}
           </h1>
           <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
-            {t('hero_description')}
+            {translate('hero_description')}
           </p>
           <button
             type="button"
             className="flex w-1/2 flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]">
             <AiFillPlayCircle className="text-white mr-2" />
             <p className="text-white text-base font-semibold">
-              {t('learn_more')}
+              {translate('learn_more')}
             </p>
           </button>
 

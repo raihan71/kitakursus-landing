@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   Navbar,
   Hero,
@@ -5,19 +6,27 @@ import {
   Service,
   Program,
   WhyChooseUs,
+  CTA,
 } from './components';
 
 const App = () => {
+  const { t } = useTranslation();
+  
   return (
     <div className="min-h-screen">
-      <div className="gradient-bg-welcome">
-        <Navbar />
-        <Hero />
-        <WhyChooseUs />
-      </div>
-      <Program />
-      <Service />
-      <Footer />
+    <div className="gradient-bg-welcome">
+    <Navbar />
+    <Hero translate={t} />
+    <WhyChooseUs translate={t} />
+    </div>
+    <div className="gradient-bg-services">
+    <Program translate={t} />
+    </div>
+    <Service translate={t} />
+    <div className="bg-gradient-to-b from-gray-900 via-black to-black">
+    <CTA translate={t} />
+    </div>
+    <Footer />
     </div>
   );
 };

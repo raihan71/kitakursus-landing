@@ -1,14 +1,15 @@
-const WhyChooseUs = () => (
+import type { TranslationProps } from '../types/TranslationProps';
+
+const WhyChooseUs = ({ translate }: TranslationProps) => (
   <div className="w-full px-4 pt-12 pb-24">
     <div className="flex w-full justify-center items-center">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-white mb-4">
-            Kenapa Memilih Kami
+            {translate('why_choose_us_title')}
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Kami menyediakan bimbingan yang berkualitas dan program yang
-            komprehensif untuk membantu capai tujuan karir kamu
+            {translate('why_choose_us_subtitle')}
           </p>
         </div>
       </div>

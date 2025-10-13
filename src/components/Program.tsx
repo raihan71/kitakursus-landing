@@ -1,15 +1,16 @@
 import { programs } from '../configs/constants';
+import type { TranslationProps } from '../types/TranslationProps';
 
-const Program = () => {
+const Program = ({ translate }: TranslationProps) => {
   return (
-    <div className="flex w-full justify-center items-center gradient-bg-services">
+    <div className="flex w-full justify-center items-center blue-glassmorphism py-14">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-white mb-4">
-            Program Tersedia
+            {translate('program_title')}
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Pilih program yang sesuai dengan minat dan tujuan karir kamu
+            {translate('program_subtitle')}
           </p>
         </div>
 

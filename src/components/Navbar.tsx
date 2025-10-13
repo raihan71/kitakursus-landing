@@ -1,6 +1,7 @@
 import React from 'react';
 import { HiMenuAlt4 } from 'react-icons/hi';
 import { AiOutlineClose } from 'react-icons/ai';
+import { useTranslation } from 'react-i18next';
 import type { NavbarItemProps } from '../types/NavbarItemProps';
 import { images } from '../configs/image';
 import { menus } from '../configs/menu';
@@ -11,6 +12,8 @@ const NavBarItem = ({ title, classprops }: NavbarItemProps) => (
 );
 
 const Navbar = () => {
+  const { t } = useTranslation();
+
   const [toggleMenu, setToggleMenu] = React.useState(false);
 
   return (
@@ -55,7 +58,7 @@ const Navbar = () => {
             {menus.map((item, index) => (
               <NavBarItem
                 key={index}
-                title={item.title}
+                title={t(item.title)}
                 classprops="my-2 text-lg"
               />
             ))}
