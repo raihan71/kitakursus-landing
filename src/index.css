@@ -19,42 +19,30 @@ body {
 
 .gradient-bg-welcome {
   background-color: #0a0e1a;
-  background-image: radial-gradient(
-      at 0% 0%,
-      hsla(220, 40%, 12%, 1) 0,
-      transparent 50%
-    ),
+  background-image:
+    radial-gradient(at 0% 0%, hsla(220, 40%, 12%, 1) 0, transparent 50%),
     radial-gradient(at 50% 0%, hsla(210, 55%, 32%, 1) 0, transparent 50%),
     radial-gradient(at 100% 0%, hsla(160, 60%, 28%, 1) 0, transparent 55%);
 }
 
 .gradient-bg-services {
   background-color: #0a0e1a;
-  background-image: radial-gradient(
-      at 0% 0%,
-      hsla(220, 40%, 8%, 1) 0,
-      transparent 50%
-    ),
+  background-image:
+    radial-gradient(at 0% 0%, hsla(220, 40%, 8%, 1) 0, transparent 50%),
     radial-gradient(at 50% 100%, hsla(165, 45%, 18%, 1) 0, transparent 60%);
 }
 
 .gradient-bg-transactions {
   background-color: #0a0e1a;
-  background-image: radial-gradient(
-      at 0% 100%,
-      hsla(220, 40%, 8%, 1) 0,
-      transparent 50%
-    ),
+  background-image:
+    radial-gradient(at 0% 100%, hsla(220, 40%, 8%, 1) 0, transparent 50%),
     radial-gradient(at 50% 0%, hsla(160, 50%, 20%, 1) 0, transparent 55%);
 }
 
 .gradient-bg-footer {
   background-color: #0a0e1a;
-  background-image: radial-gradient(
-      at 0% 100%,
-      hsla(220, 40%, 8%, 1) 0,
-      transparent 53%
-    ),
+  background-image:
+    radial-gradient(at 0% 100%, hsla(220, 40%, 8%, 1) 0, transparent 53%),
     radial-gradient(at 50% 150%, hsla(165, 55%, 20%, 1) 0, transparent 55%);
 }
 
@@ -77,27 +65,53 @@ body {
 }
 
 .employee-card {
-  background-color: #1a3a52;
-  background-image: radial-gradient(
-      at 83% 67%,
-      hsla(165, 60%, 45%, 1) 0,
-      transparent 58%
+  background: linear-gradient(135deg, #f7e7b0 0%, #ffd700 40%, #e6b800 100%);
+  border-radius: 12px;
+  border: 2px solid #ffd700;
+  box-shadow:
+    0 6px 24px rgba(255, 215, 0, 0.25),
+    0 1.5px 0 #fff8dc inset;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Accent background sands/dust effect */
+.employee-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.35) 0%,
+      rgba(255, 255, 255, 0.05) 80%
     ),
-    radial-gradient(at 67% 20%, hsla(200, 70%, 50%, 1) 0, transparent 59%),
-    radial-gradient(at 88% 35%, hsla(210, 65%, 55%, 1) 0, transparent 50%),
-    radial-gradient(at 31% 91%, hsla(175, 50%, 40%, 1) 0, transparent 52%),
-    radial-gradient(at 27% 71%, hsla(195, 60%, 45%, 1) 0, transparent 49%),
-    radial-gradient(at 74% 89%, hsla(160, 65%, 42%, 1) 0, transparent 51%),
-    radial-gradient(at 53% 75%, hsla(185, 55%, 48%, 1) 0, transparent 45%);
+    url("data:image/svg+xml;utf8,<svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><circle cx='10' cy='20' r='1.5' fill='rgba(230,184,0,0.18)'/><circle cx='60' cy='80' r='2' fill='rgba(230,184,0,0.12)'/><circle cx='120' cy='40' r='1' fill='rgba(230,184,0,0.15)'/><circle cx='200' cy='120' r='2.5' fill='rgba(230,184,0,0.13)'/><circle cx='300' cy='60' r='1.2' fill='rgba(230,184,0,0.16)'/><circle cx='400' cy='100' r='1.8' fill='rgba(230,184,0,0.14)'/></svg>");
+  background-repeat: repeat;
+  background-size: cover;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.employee-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 18px;
+  background: linear-gradient(to top, #ffd700 0%, transparent 100%);
+  opacity: 0.5;
+  z-index: 2;
 }
 
 .text-gradient {
   background-color: #fff;
-  background-image: radial-gradient(
-      at 4% 36%,
-      hsla(180, 65%, 85%, 1) 0,
-      transparent 53%
-    ),
+  background-image:
+    radial-gradient(at 4% 36%, hsla(180, 65%, 85%, 1) 0, transparent 53%),
     radial-gradient(at 100% 60%, hsla(210, 70%, 45%, 1) 0, transparent 50%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -119,7 +133,7 @@ body {
 
 .typing-glitch::before {
   animation: glitch-1 0.5s ease-in-out;
-  color: #ff0000;
+  color: #9d00ff;
   z-index: -1;
 }
 

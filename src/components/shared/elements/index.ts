@@ -7,3 +7,4 @@ export { default as Program } from './Program';
 export { default as WhyChooseUs } from './WhyChooseUs';
 export { default as CardEmployee } from './CardEmployee';
 export { default as CTA } from './CTA';
+export { default as NavbarDetail } from './NavbarDetail';

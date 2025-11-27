@@ -1,4 +1,4 @@
-import type { TranslationProps } from '../types/TranslationProps';
+import type { TranslationProps } from '../../../types/TranslationProps';
 
 const CTA = ({ translate }: TranslationProps) => {
   return (

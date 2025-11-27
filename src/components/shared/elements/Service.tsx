@@ -2,14 +2,15 @@ import { BsShieldFillCheck } from 'react-icons/bs';
 import { BiSearchAlt, BiSolidRocket } from 'react-icons/bi';
 import { RiHeart2Fill } from 'react-icons/ri';
 import { FaMoneyBillAlt } from 'react-icons/fa';
-import type { ServiceCardProps } from '../types/ServiceCardProps';
-import type { TranslationProps } from '../types/TranslationProps';
-import { serviceData } from '../configs/constants';
+import type { ServiceCardProps } from '../../../types/ServiceCardProps';
+import type { TranslationProps } from '../../../types/TranslationProps';
+import { serviceData } from '../../../configs/constants';
 
 const ServiceCard = ({ color, title, icon, subtitle }: ServiceCardProps) => (
-  <div className="flex flex-row justify-start items-start white-glassmorphism p-3 m-2 py-5 cursor-pointer hover:shadow-xl">
+  <div className="flex flex-row justify-start items-start white-glassmorphism p-3 m-2 py-5 hover:shadow-xl">
     <div
-      className={`w-10 h-10 rounded-full flex justify-center items-center ${color}`}>
+      className={`w-10 h-10 rounded-full flex justify-center items-center ${color}`}
+    >
       {icon}
     </div>
     <div className="ml-5 flex flex-col flex-1">

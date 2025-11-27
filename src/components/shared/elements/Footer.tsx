@@ -1,4 +1,4 @@
-import { images } from '../configs/image';
+import { images } from '../../../configs/image';
 
 const Footer = () => (
   <footer className="w-full flex md:justify-center justify-between items-center flex-col p-4 gradient-bg-footer">
@@ -66,13 +66,15 @@ const Footer = () => (
             <a
               href="#"
               aria-label="Twitter"
-              className="text-gray-300 hover:text-white">
+              className="text-gray-300 hover:text-white"
+            >
               <svg
                 width="20"
                 height="20"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="transition-colors">
+                className="transition-colors"
+              >
                 <path d="M22 5.92c-.66.3-1.37.5-2.12.6a3.7 3.7 0 0 0 1.62-2.04 7.35 7.35 0 0 1-2.34.9 3.68 3.68 0 0 0-6.27 3.36A10.45 10.45 0 0 1 3.16 4.9a3.68 3.68 0 0 0 1.14 4.91 3.62 3.62 0 0 1-1.67-.46v.05a3.68 3.68 0 0 0 2.95 3.61c-.48.13-.98.2-1.5.08a3.69 3.69 0 0 0 3.44 2.56A7.38 7.38 0 0 1 2 18.57a10.4 10.4 0 0 0 5.63 1.65c6.76 0 10.46-5.6 10.46-10.46v-.48A7.4 7.4 0 0 0 22 5.92z" />
               </svg>
             </a>
@@ -81,12 +83,14 @@ const Footer = () => (
             <a
               href="#"
               aria-label="Telegram"
-              className="text-gray-300 hover:text-white">
+              className="text-gray-300 hover:text-white"
+            >
               <svg
                 width="20"
                 height="20"
                 viewBox="0 0 24 24"
-                fill="currentColor">
+                fill="currentColor"
+              >
                 <path d="M21 3L3 10.5l4 1.5L9 21l3.5-2 3.5 2 1.5-6 4-10.5zM10 14.5l-.9-3.6L18 6 10 14.5z" />
               </svg>
             </a>
@@ -95,12 +99,14 @@ const Footer = () => (
             <a
               href="#"
               aria-label="GitHub"
-              className="text-gray-300 hover:text-white">
+              className="text-gray-300 hover:text-white"
+            >
               <svg
                 width="20"
                 height="20"
                 viewBox="0 0 24 24"
-                fill="currentColor">
+                fill="currentColor"
+              >
                 <path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.4-1.5-1.8-1.5-1.8-1.2-.8.1-.8.1-.8 1.3.1 2 1.3 2 1.3 1.2 2 3.2 1.4 4 .9.1-.8.5-1.4.9-1.8-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.4 1.3-3.3-.1-.3-.6-1.6.1-3.3 0 0 1-.3 3.3 1.3a11.4 11.4 0 0 1 6 0C17.8 4 18.8 4.3 18.8 4.3c.7 1.7.2 3 .1 3.3.8.9 1.3 2 1.3 3.3 0 4.5-2.7 5.5-5.3 5.8.5.4.9 1.1.9 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z" />
               </svg>
             </a>

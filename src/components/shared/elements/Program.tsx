@@ -1,7 +1,10 @@
-import { programs } from '../configs/constants';
-import type { TranslationProps } from '../types/TranslationProps';
+import { useNavigate } from 'react-router-dom';
+import { programs } from '../../../configs/constants';
+import type { TranslationProps } from '../../../types/TranslationProps';
 
 const Program = ({ translate }: TranslationProps) => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex w-full justify-center items-center blue-glassmorphism py-14">
       <div className="max-w-7xl mx-auto">
@@ -19,13 +22,16 @@ const Program = ({ translate }: TranslationProps) => {
             programs.length === 1
               ? 'grid-cols-1 justify-items-center'
               : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
-          }`}>
+          }`}
+        >
           {programs.map((item, index) => (
             <div
               key={index}
-              className={`program-card white-glassmorphism rounded-2xl p-8 ${
+              onClick={() => navigate(`/course/${item.id}`)}
+              className={`program-card white-glassmorphism rounded-2xl p-8 cursor-pointer hover:scale-105 transition-transform ${
                 programs.length === 1 ? 'max-w-md' : ''
-              }`}>
+              }`}
+            >
               <div className="icon-container w-16 h-16 rounded-xl flex items-center justify-center mb-6">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +42,8 @@ const Program = ({ translate }: TranslationProps) => {
                   stroke="#50c8b4"
                   strokeWidth="2"
                   strokeLinecap="round"
-                  strokeLinejoin="round">
+                  strokeLinejoin="round"
+                >
                   <polyline points="16 18 22 12 16 6"></polyline>
                   <polyline points="8 6 2 12 8 18"></polyline>
                 </svg>
@@ -51,7 +58,8 @@ const Program = ({ translate }: TranslationProps) => {
                 {item.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="tag text-xs px-3 py-1 rounded-full text-emerald-300">
+                    className="tag text-xs px-3 py-1 rounded-full text-emerald-300"
+                  >
                     {tag}
                   </span>
                 ))}
@@ -61,7 +69,7 @@ const Program = ({ translate }: TranslationProps) => {
                   {item.duration}
                 </span>
                 <button className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-6 py-2 rounded-lg font-medium hover:opacity-90 transition">
-                  Learn More
+                  {translate('learn_more')}
                 </button>
               </div>
             </div>

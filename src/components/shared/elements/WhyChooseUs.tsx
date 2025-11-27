@@ -1,4 +1,4 @@
-import type { TranslationProps } from '../types/TranslationProps';
+import type { TranslationProps } from '../../../types/TranslationProps';
 
 const WhyChooseUs = ({ translate }: TranslationProps) => (
   <div className="w-full px-4 pt-12 pb-24">
