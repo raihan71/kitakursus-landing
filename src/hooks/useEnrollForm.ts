@@ -121,7 +121,7 @@ export const useEnrollForm = ({
 
         const credentials = encodeCredentials(username, password);
 
-        await fetchData(serviceConfig.submitEnrollment(), {
+        const resp: any = await fetchData(serviceConfig.submitEnrollment(), {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -130,9 +130,13 @@ export const useEnrollForm = ({
           body: JSON.stringify(sanitizedPayload),
         });
 
-        setFormData(createInitialState());
-        setIsSubmitting(false);
-        onSuccess?.();
+        if (resp.message === 'success enroll') {
+          setFormData(createInitialState());
+          setIsSubmitting(false);
+          onSuccess?.();
+        } else {
+          throw new Error(messages.genericError);
+        }
       } catch (error) {
         if (error instanceof DOMException && error.name === 'AbortError') {
           setIsSubmitting(false);
