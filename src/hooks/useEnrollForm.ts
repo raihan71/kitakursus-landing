@@ -8,6 +8,7 @@ import {
 import type { FormEvent } from 'react';
 import { fetchData } from '../services/fetch';
 import { serviceConfig } from '../configs/service';
+import { useRecaptcha } from './useRecaptcha';
 
 type EnrollFormData = {
   fullName: string;
@@ -68,6 +69,7 @@ export const useEnrollForm = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
+  const { validateRecaptcha } = useRecaptcha();
 
   useEffect(() => () => abortControllerRef.current?.abort(), []);
 
@@ -101,8 +103,11 @@ export const useEnrollForm = ({
           course: courseTitle,
         };
 
+        await validateRecaptcha('submit_enrollment', controller.signal);
+
         const verification = await fetchData<HunterVerificationResponse>(
           serviceConfig.verify(sanitizedPayload.email),
+          { signal: controller.signal },
         );
 
         const status = verification.data?.status;
@@ -128,6 +133,7 @@ export const useEnrollForm = ({
             Authorization: `Basic ${credentials}`,
           },
           body: JSON.stringify(sanitizedPayload),
+          signal: controller.signal,
         });
 
         if (resp.message === 'success enroll') {
@@ -150,7 +156,7 @@ export const useEnrollForm = ({
         );
       }
     },
-    [courseTitle, formData, messages, onSuccess],
+    [courseTitle, formData, messages, onSuccess, validateRecaptcha],
   );
 
   return {

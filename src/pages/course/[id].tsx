@@ -80,7 +80,7 @@ const DetailCourse = () => {
         </div>
 
         {/* Promotional Banners */}
-        <div className="space-y-2 mb-4">
+        {/* <div className="space-y-2 mb-4">
           <div className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-4 py-3 rounded-lg text-center font-semibold">
             {t('course_free_shipping')}
           </div>
@@ -90,7 +90,7 @@ const DetailCourse = () => {
           <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-3 rounded-lg text-center font-semibold">
             {t('course_cashback')}
           </div>
-        </div>
+        </div> */}
 
         {/* Flash Sale Section */}
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-4">
