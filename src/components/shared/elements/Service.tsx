@@ -38,7 +38,7 @@ const Service = ({ translate }: TranslationProps) => (
           <ServiceCard
             key={index}
             color={item.color}
-            title={item.title}
+            title={translate(item.titleKey)}
             icon={
               item.icon === 'BsShieldFillCheck' ? (
                 <BsShieldFillCheck fontSize={21} className="text-white" />
@@ -52,7 +52,7 @@ const Service = ({ translate }: TranslationProps) => (
                 <FaMoneyBillAlt fontSize={21} className="text-white" />
               ) : null
             }
-            subtitle={item.subtitle}
+            subtitle={translate(item.subtitleKey)}
           />
         ))}
       </div>

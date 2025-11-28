@@ -86,30 +86,26 @@ export const programs = [
 export const serviceData = [
   {
     color: 'bg-[#2952E3]',
-    title: 'Karir Naik Kelas',
+    titleKey: 'service_card_career_title',
     icon: 'BsShieldFillCheck', // Placeholder for the actual icon component
-    subtitle:
-      'Bingung pengen upgrade skill tapi gak tau mulai dari mana? Tenang, kami bantu, kita punya solusinya!',
+    subtitleKey: 'service_card_career_subtitle',
   },
   {
     color: 'bg-[#8945F8]',
-    title: 'Personal Branding',
+    titleKey: 'service_card_branding_title',
     icon: 'BiSearchAlt', // Placeholder for the actual icon component
-    subtitle:
-      'Mau dikenal banyak orang karena skill kamu? Yuk, kami bantu bangun personal branding yang kuat dan menarik!',
+    subtitleKey: 'service_card_branding_subtitle',
   },
   {
     color: 'bg-[#F84550]',
-    title: 'Siap Kerja Global',
+    titleKey: 'service_card_global_title',
     icon: 'BiSolidRocket', // Placeholder for the actual icon component
-    subtitle:
-      'Pengen kerja di luar negeri? Kami siap bantu kamu dengan pelatihan dan persiapan yang tepat!',
+    subtitleKey: 'service_card_global_subtitle',
   },
   {
     color: 'bg-emerald-500', // Custom green hex code
-    title: 'Hemat Biaya',
+    titleKey: 'service_card_saving_title',
     icon: 'FaMoneyBillAlt', // Placeholder for the actual icon component
-    subtitle:
-      'Mau belajar skill baru tanpa bikin kantong bolong? Tenang, kita punya solusi hemat biaya buat kamu!',
+    subtitleKey: 'service_card_saving_subtitle',
   },
 ];

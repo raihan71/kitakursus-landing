@@ -1,8 +1,9 @@
-import React from 'react';
+import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { programs } from '../../../configs/constants';
 import Notfound from './Notfound';
+import { useEnrollForm } from '../../../hooks/useEnrollForm';
 
 type EnrollProps = {
   onSuccess?: () => void;
@@ -12,15 +13,22 @@ const Enroll = ({ onSuccess }: EnrollProps) => {
   const { id } = useParams<{ id: string }>();
   const { t } = useTranslation();
 
-  const course = React.useMemo(() => programs.find((p) => p.id === id), [id]);
+  const course = useMemo(() => programs.find((p) => p.id === id), [id]);
 
-  const [formData, setFormData] = React.useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    notes: '',
-  });
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const messages = useMemo(
+    () => ({
+      invalidEmail: t('enroll_invalid_email'),
+      genericError: t('enroll_error'),
+    }),
+    [t],
+  );
+
+  const { formData, handleChange, handleSubmit, isSubmitting, errorMessage } =
+    useEnrollForm({
+      courseTitle: course?.title,
+      messages,
+      onSuccess,
+    });
 
   if (!course) {
     return (
@@ -30,28 +38,6 @@ const Enroll = ({ onSuccess }: EnrollProps) => {
       />
     );
   }
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    console.log('Form Data Submitted:', formData);
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      onSuccess?.();
-    }, 800);
-  };
-
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 pb-24">
       <h1 className="text-3xl font-bold text-gray-900 mb-6">
@@ -179,6 +165,11 @@ const Enroll = ({ onSuccess }: EnrollProps) => {
             <div className="bg-gray-50 border border-gray-100 rounded-xl p-4 text-sm text-gray-600">
               <p>{t('enroll_disclaimer')}</p>
             </div>
+            {errorMessage && (
+              <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl p-3">
+                {errorMessage}
+              </p>
+            )}
             <button
               type="submit"
               className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 text-white py-3 rounded-lg font-semibold hover:opacity-90 transition disabled:opacity-60 disabled:cursor-not-allowed"

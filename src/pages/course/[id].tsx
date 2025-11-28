@@ -16,6 +16,14 @@ const DetailCourse = () => {
 
   const course = programs.find((p) => p.id === id);
 
+  const handleConsult = () => {
+    const text = encodeURIComponent(
+      `Halo saya ingin bertanya tentang program ${course?.title}`,
+    );
+    const contactUrl = `whatsapp://send?phone=${import.meta.env.VITE_PHONE_NUMBER}&text=${text}`;
+    window.location.href = contactUrl;
+  };
+
   if (!course) {
     return (
       <Notfound
@@ -224,8 +232,8 @@ const DetailCourse = () => {
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center gap-3">
             <ButtonPrimary
-              onClick={() => alert('Progressing')}
-              className="p-3 bg-gray-50 hover:bg-gray-100 rounded-full transition"
+              onClick={handleConsult}
+              className="p-3 hover:bg-gray-100 rounded-full transition"
             >
               <HiOutlineChatBubbleLeftRight className="text-2xl text-gray-600" />
             </ButtonPrimary>
