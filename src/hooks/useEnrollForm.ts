@@ -69,7 +69,7 @@ export const useEnrollForm = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
-  const { validateRecaptcha } = useRecaptcha();
+  const { getToken: getRecaptchaToken } = useRecaptcha();
 
   useEffect(() => () => abortControllerRef.current?.abort(), []);
 
@@ -95,15 +95,16 @@ export const useEnrollForm = ({
       abortControllerRef.current = controller;
 
       try {
+        const recaptchaToken = await getRecaptchaToken('submit_enrollment');
+
         const sanitizedPayload = {
           fullName: formData.fullName.trim(),
           email: formData.email.trim().toLowerCase(),
           phone: formData.phone.trim(),
           notes: formData.notes.trim(),
           course: courseTitle,
+          recaptchaToken,
         };
-
-        await validateRecaptcha('submit_enrollment', controller.signal);
 
         const verification = await fetchData<HunterVerificationResponse>(
           serviceConfig.verify(sanitizedPayload.email),
@@ -156,7 +157,7 @@ export const useEnrollForm = ({
         );
       }
     },
-    [courseTitle, formData, messages, onSuccess, validateRecaptcha],
+    [courseTitle, formData, messages, onSuccess, getRecaptchaToken],
   );
 
   return {

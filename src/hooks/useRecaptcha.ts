@@ -1,5 +1,4 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
-import { fetchData } from '../services/fetch';
 import { serviceConfig } from '../configs/service';
 
 type GrecaptchaV3 = {
@@ -7,30 +6,18 @@ type GrecaptchaV3 = {
   execute(siteKey: string, options?: { action?: string }): Promise<string>;
 };
 
-type RecaptchaVerificationResponse = {
-  success: boolean;
-  score?: number;
-  action?: string;
-  challenge_ts?: string;
-  hostname?: string;
-  'error-codes'?: string[];
-};
-
 type UseRecaptchaOptions = {
-  minimumScore?: number;
+  actionName?: string;
 };
 
 type UseRecaptchaResult = {
   isReady: boolean;
   loadError: string | null;
-  validateRecaptcha: (
-    action?: string,
-    signal?: AbortSignal,
-  ) => Promise<RecaptchaVerificationResponse>;
+  getToken: (action?: string) => Promise<string>;
 };
 
 const SCRIPT_ID = 'kitakursus-recaptcha-script';
-const DEFAULT_MIN_SCORE = 0.5;
+const DEFAULT_ACTION = 'submit_enrollment';
 
 const getGreCaptcha = () =>
   (globalThis as typeof globalThis & { grecaptcha?: GrecaptchaV3 }).grecaptcha;
@@ -42,7 +29,7 @@ export const useRecaptcha = (
   const [isReady, setIsReady] = useState(false);
   const [loadError, setLoadError] = useState<string | null>(null);
   const loadPromiseRef = useRef<Promise<void> | null>(null);
-  const minimumScore = options?.minimumScore ?? DEFAULT_MIN_SCORE;
+  const defaultAction = options?.actionName ?? DEFAULT_ACTION;
 
   const ensureScriptLoaded = useCallback(() => {
     if (loadPromiseRef.current) {
@@ -106,8 +93,8 @@ export const useRecaptcha = (
     return loadPromiseRef.current;
   }, [recaptchaConfig.siteKey]);
 
-  const executeRecaptcha = useCallback(
-    async (action?: string) => {
+  const getToken = useCallback(
+    async (action = defaultAction) => {
       await ensureScriptLoaded();
       const recaptcha = getGreCaptcha();
 
@@ -116,58 +103,19 @@ export const useRecaptcha = (
       }
 
       const token = await recaptcha.execute(recaptchaConfig.siteKey, { action });
+
       if (!token) {
         throw new Error('Unable to retrieve reCAPTCHA token.');
       }
 
       return token;
     },
-    [ensureScriptLoaded, recaptchaConfig.siteKey],
-  );
-
-  const verifyToken = useCallback(
-    async (token: string, signal?: AbortSignal) => {
-      const params = new URLSearchParams({
-        secret: recaptchaConfig.secretKey,
-        response: token,
-      });
-
-      return fetchData<RecaptchaVerificationResponse>(recaptchaConfig.endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: params.toString(),
-        signal,
-      });
-    },
-    [recaptchaConfig.endpoint, recaptchaConfig.secretKey],
-  );
-
-  const validateRecaptcha = useCallback(
-    async (action = 'submit_enrollment', signal?: AbortSignal) => {
-      const token = await executeRecaptcha(action);
-      const verification = await verifyToken(token, signal);
-
-      if (!verification.success) {
-        throw new Error('Failed to validate reCAPTCHA token.');
-      }
-
-      if (
-        typeof verification.score === 'number' &&
-        verification.score < minimumScore
-      ) {
-        throw new Error('Suspicious activity detected.');
-      }
-
-      return verification;
-    },
-    [executeRecaptcha, minimumScore, verifyToken],
+    [defaultAction, ensureScriptLoaded, recaptchaConfig.siteKey],
   );
 
   return {
     isReady,
     loadError,
-    validateRecaptcha,
+    getToken,
   };
 };
