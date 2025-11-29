@@ -1,7 +1,8 @@
 const hunterEmailApi = 'https://api.hunter.io/v2';
-const nnnEndpoint = import.meta.env.VITE_ENDPOINT_NNN;
 const apiKey = import.meta.env.VITE_EMAIL_HUNTER_API;
 const reCaptchaSiteKey = import.meta.env.VITE_RCAPTCHA_SITE_KEY;
+const enrollmentApiEndpoint =
+  import.meta.env.VITE_ENROLLMENT_API ?? '/api/enroll';
 
 export const serviceConfig = {
   verify: (email: string) => {
@@ -16,13 +17,7 @@ export const serviceConfig = {
 
     return `${hunterEmailApi}/email-verifier?${params.toString()}`;
   },
-  submitEnrollment: () => {
-    if (!nnnEndpoint) {
-      throw new Error('Enrollment endpoint is not configured.');
-    }
-
-    return nnnEndpoint;
-  },
+  submitEnrollment: () => enrollmentApiEndpoint,
   reCaptcha: () => {
     if (!reCaptchaSiteKey) {
       throw new Error('reCAPTCHA site key is not configured.');

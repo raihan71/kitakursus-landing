@@ -24,6 +24,13 @@ type HunterVerificationResponse = {
   };
 };
 
+type EnrollmentResponse = {
+  success: boolean;
+  message?: string;
+  score?: number;
+  remoteResponse?: Record<string, unknown> | null;
+};
+
 type UseEnrollFormOptions = {
   courseTitle?: string;
   messages: {
@@ -49,14 +56,6 @@ const createInitialState = (): EnrollFormData => ({
   phone: '',
   notes: '',
 });
-
-const encodeCredentials = (username: string, password: string) => {
-  if (typeof globalThis.btoa === 'function') {
-    return globalThis.btoa(`${username}:${password}`);
-  }
-
-  throw new Error('Unable to encode credentials in this environment.');
-};
 
 export const useEnrollForm = ({
   courseTitle,
@@ -103,7 +102,6 @@ export const useEnrollForm = ({
           phone: formData.phone.trim(),
           notes: formData.notes.trim(),
           course: courseTitle,
-          recaptchaToken,
         };
 
         const verification = await fetchData<HunterVerificationResponse>(
@@ -118,32 +116,34 @@ export const useEnrollForm = ({
           throw new Error(messages.invalidEmail);
         }
 
-        const username = import.meta.env.VITE_BASIC_AUTH_USERNAME;
-        const password = import.meta.env.VITE_BASIC_AUTH_PASSWORD;
-
-        if (!username || !password) {
-          throw new Error(messages.genericError);
-        }
-
-        const credentials = encodeCredentials(username, password);
-
-        const resp: any = await fetchData(serviceConfig.submitEnrollment(), {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Basic ${credentials}`,
+        const resp = await fetchData<EnrollmentResponse>(
+          serviceConfig.submitEnrollment(),
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              token: recaptchaToken,
+              payload: sanitizedPayload,
+            }),
+            signal: controller.signal,
           },
-          body: JSON.stringify(sanitizedPayload),
-          signal: controller.signal,
-        });
+        );
 
-        if (resp.message === 'success enroll') {
-          setFormData(createInitialState());
-          setIsSubmitting(false);
-          onSuccess?.();
-        } else {
+        if (!resp.success) {
+          throw new Error(resp.message ?? messages.genericError);
+        }
+
+        const enrollMessage = resp.message ?? resp.remoteResponse?.message;
+
+        if (enrollMessage !== 'success enroll') {
           throw new Error(messages.genericError);
         }
+
+        setFormData(createInitialState());
+        setIsSubmitting(false);
+        onSuccess?.();
       } catch (error) {
         if (error instanceof DOMException && error.name === 'AbortError') {
           setIsSubmitting(false);
