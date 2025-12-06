@@ -5,6 +5,7 @@ export { default as Service } from './Service';
 export { default as Hero } from './Hero';
 export { default as Program } from './Program';
 export { default as WhyChooseUs } from './WhyChooseUs';
+export { default as Toast } from './Toast';
 export { default as CardEmployee } from './CardEmployee';
 export { default as CTA } from './CTA';
 export { default as NavbarDetail } from './NavbarDetail';

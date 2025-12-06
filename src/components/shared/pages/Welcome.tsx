@@ -7,6 +7,7 @@ import {
   Program,
   WhyChooseUs,
   CTA,
+  Toast,
 } from '../../shared/elements/';
 
 const Welcome = () => {
@@ -27,6 +28,12 @@ const Welcome = () => {
         <CTA translate={t} />
       </div>
       <Footer />
+      <Toast
+        message={t('toast_cookie_message')}
+        onClose={() => {
+          console.log('Toast closed');
+        }}
+      />
     </div>
   );
 };

@@ -70,5 +70,6 @@
   "enroll_error": "Terjadi kesalahan saat mengirim pendaftaranmu. Silakan coba lagi.",
   "enroll_invalid_email": "Silakan masukkan alamat email yang valid.",
   "enroll_invalid_name": "Silakan masukkan nama lengkapmu.",
-  "enroll_invalid_phone": "Silakan masukkan nomor telepon yang valid."
+  "enroll_invalid_phone": "Silakan masukkan nomor telepon yang valid.",
+  "toast_cookie_message": "Kami menggunakan cookie untuk mempersonalisasi situs web kami."
 }

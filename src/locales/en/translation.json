@@ -70,5 +70,6 @@
   "enroll_error": "An error occurred while submitting your enrollment. Please try again.",
   "enroll_invalid_email": "Please enter a valid email address.",
   "enroll_invalid_name": "Please enter your full name.",
-  "enroll_invalid_phone": "Please enter a valid phone number."
+  "enroll_invalid_phone": "Please enter a valid phone number.",
+  "toast_cookie_message": "We use cookies to personalize our website."
 }
