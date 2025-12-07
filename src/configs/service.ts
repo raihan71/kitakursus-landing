@@ -1,6 +1,6 @@
 const hunterEmailApi = 'https://api.hunter.io/v2';
 const apiKey = import.meta.env.VITE_EMAIL_HUNTER_API;
-const reCaptchaSiteKey = import.meta.env.VITE_RCAPTCHA_SITE_KEY;
+const reCaptchaSiteKey = import.meta.env.VITE_RCAPTCHA_SITE_KEY ?? '';
 const enrollmentApiEndpoint =
   import.meta.env.VITE_ENROLLMENT_API ?? '/api/enroll';
 

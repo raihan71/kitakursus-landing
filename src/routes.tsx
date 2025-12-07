@@ -1,20 +1,35 @@
+import React, { Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import { Welcome } from './pages/welcome';
-import DetailCourse from './pages/course/[id]';
-import EnrollCourse from './pages/enroll/[id]';
+import { Loader } from './components/shared/elements';
+
+const Welcome = React.lazy(() => import('./pages/welcome'));
+const DetailCourse = React.lazy(() => import('./pages/course/[id]'));
+const EnrollCourse = React.lazy(() => import('./pages/enroll/[id]'));
 
 const routes = createBrowserRouter([
   {
     path: '/',
-    element: <Welcome />,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Welcome />
+      </Suspense>
+    ),
   },
   {
     path: '/course/:id',
-    element: <DetailCourse />,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <DetailCourse />
+      </Suspense>
+    ),
   },
   {
     path: '/enroll/:id',
-    element: <EnrollCourse />,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <EnrollCourse />
+      </Suspense>
+    ),
   },
 ]);
 
