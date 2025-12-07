@@ -37,5 +37,8 @@ jobs:
             echo "Kitakursus..."
             cd /var/www/project/kitakursus-landing
             git pull
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
+            npm install
             npm run build
             free && sync && echo 3 > /proc/sys/vm/drop_caches && free
