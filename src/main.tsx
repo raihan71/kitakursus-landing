@@ -8,7 +8,7 @@ import routes from './routes.tsx';
 
 mixpanel.init(import.meta.env.VITE_MIXPANEL_TOKEN as string, {
   autocapture: true,
-  debug: true,
+  debug: false,
   persistence: 'cookie',
 });
 
