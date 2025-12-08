@@ -71,5 +71,7 @@
   "enroll_invalid_email": "Please enter a valid email address.",
   "enroll_invalid_name": "Please enter your full name.",
   "enroll_invalid_phone": "Please enter a valid phone number.",
-  "toast_cookie_message": "We use cookies to personalize our website."
+  "toast_cookie_message": "We use cookies to personalize our website.",
+  "about_title": "About Us",
+  "about_subtitle": "Our mission is to empower individuals through quality education and mentorship, helping them achieve their personal and professional goals."
 }

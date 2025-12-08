@@ -6,7 +6,10 @@ const Program = ({ translate }: TranslationProps) => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex w-full justify-center items-center blue-glassmorphism py-14">
+    <div
+      id="programID"
+      className="flex w-full justify-center items-center blue-glassmorphism py-14"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-white mb-4">

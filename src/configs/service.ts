@@ -3,6 +3,7 @@ const apiKey = import.meta.env.VITE_EMAIL_HUNTER_API;
 const reCaptchaSiteKey = import.meta.env.VITE_RCAPTCHA_SITE_KEY ?? '';
 const enrollmentApiEndpoint =
   import.meta.env.VITE_ENROLLMENT_API ?? '/api/enroll';
+export const nnnFormEndpoint = import.meta.env.VITE_NNN_FORM ?? '';
 
 export const serviceConfig = {
   verify: (email: string) => {

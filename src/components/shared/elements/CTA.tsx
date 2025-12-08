@@ -2,7 +2,10 @@ import type { TranslationProps } from '../../../types/TranslationProps';
 
 const CTA = ({ translate }: TranslationProps) => {
   return (
-    <div className="text-center pt-16 pb-24 px-12 text-white blue-glassmorphism">
+    <div
+      id="cta"
+      className="text-center pt-16 pb-24 px-12 text-white blue-glassmorphism"
+    >
       <h2 className="text-2xl font-bold">{translate('cta_title')}</h2>
       <p className="mt-4">{translate('cta_subtitle')}</p>
       <div className="flex justify-between md:block mt-6">

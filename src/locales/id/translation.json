@@ -71,5 +71,7 @@
   "enroll_invalid_email": "Silakan masukkan alamat email yang valid.",
   "enroll_invalid_name": "Silakan masukkan nama lengkapmu.",
   "enroll_invalid_phone": "Silakan masukkan nomor telepon yang valid.",
-  "toast_cookie_message": "Kami menggunakan cookie untuk mempersonalisasi situs web kami."
+  "toast_cookie_message": "Kami menggunakan cookie untuk mempersonalisasi situs web kami.",
+  "about_title": "Tentang Kami",
+  "about_subtitle": "Misi kami adalah memberdayakan individu melalui pendidikan dan bimbingan berkualitas, membantu mereka mencapai tujuan pribadi dan profesional mereka."
 }

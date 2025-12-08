@@ -2,14 +2,24 @@ import React from 'react';
 import { HiMenuAlt4 } from 'react-icons/hi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import type { NavbarItemProps } from '../../../types/NavbarItemProps';
 import { images } from '../../../configs/image';
 import { menus } from '../../../configs/menu';
 import SwitcherLanguage from './SwitcherLanguage';
 
-const NavBarItem = ({ title, classprops }: NavbarItemProps) => (
-  <li className={`mx-4 cursor-pointer ${classprops}`}>{title}</li>
-);
+const NavBarItem = ({ title, classprops, link }: NavbarItemProps) => {
+  const isHashLink = link && link.startsWith('#');
+  return isHashLink ? (
+    <li className={`mx-4 cursor-pointer ${classprops}`}>
+      <a href={link}>{title}</a>
+    </li>
+  ) : (
+    <li className={`mx-4 cursor-pointer ${classprops}`}>
+      <Link to={link ? link : '#'}>{title}</Link>
+    </li>
+  );
+};
 
 const Navbar = () => {
   const { t } = useTranslation();
@@ -47,7 +57,7 @@ const Navbar = () => {
       </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
         {menus.map((item, index) => (
-          <NavBarItem key={index} title={t(item.titleKey)} />
+          <NavBarItem key={index} link={item.link} title={t(item.titleKey)} />
         ))}
         <SwitcherLanguage />
       </ul>
